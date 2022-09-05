@@ -26,7 +26,15 @@ public class ClienteService extends GenericCrudService<Cliente, Long, ClienteRep
 			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO, cpf);
 		}
 		return cli;
-		
 	}
-	  
+
+	public Cliente buscarClientePorNome(String nome) {
+
+		Cliente cli2 = clienteRepository.findByNome(nome);
+		if (cli2 == null) {
+			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO, nome);
+		}
+		return cli2;
+	}
+
 }
